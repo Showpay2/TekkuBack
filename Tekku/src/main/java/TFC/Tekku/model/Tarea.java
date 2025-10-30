@@ -30,5 +30,14 @@ public class Tarea {
         PENDIENTE, EN_PROGRESO, COMPLETADA
     }
 
+    public Tarea convertirDesdeDTO(TareaDTO dto, Usuario peon) {
+        Tarea tarea = new Tarea();
+        tarea.setNombre(dto.getNombre());
+        tarea.setDescripcion(dto.getDescripcion());
+        tarea.setDificultadFisica(Tarea.DificultadFisica.valueOf(dto.getDificultadFisica()));
+        tarea.setEstado(Tarea.Estado.valueOf(dto.getEstado()));
+        tarea.setAsignadoA(peon);
+        return tarea;
+    }
     // Getters y Setters
 }

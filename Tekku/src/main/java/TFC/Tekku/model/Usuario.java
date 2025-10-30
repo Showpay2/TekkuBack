@@ -1,4 +1,4 @@
-package com.tekku.model;
+package TFC.tekku.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
@@ -24,6 +24,21 @@ public class Usuario {
         BAJO, MEDIO, ALTO
     }
 
+    public Usuario convertirDesdeDTO(UsuarioDTO dto) {
+        Usuario usuario = new Usuario();
+        usuario.setNombre(dto.getNombre());
+        usuario.setCorreo(dto.getCorreo());
+        usuario.setRol(Usuario.Rol.valueOf(dto.getRol()));
+        return usuario;
+    }
+
+    public UsuarioDTO convertirADTO(Usuario usuario) {
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setNombre(usuario.getNombre());
+        dto.setCorreo(usuario.getCorreo());
+        dto.setRol(usuario.getRol().name());
+        return dto;
+    }
 
     @ManyToOne
     @JoinColumn(name = "campo_id")
@@ -33,4 +48,4 @@ public class Usuario {
     private Set<ObjetivoGamificado> objetivosCompletados;
 
     @OneToMany(mappedBy = "usuario")
-   
+

@@ -24,5 +24,14 @@ public class Turno {
         MAÑANA, TARDE, NOCHE
     }
 
+    public Turno convertirDesdeDTO(TurnoDTO dto, Usuario peon) {
+        Turno turno = new Turno();
+        turno.setFechaInicio(dto.getFechaInicio());
+        turno.setFechaFin(dto.getFechaFin());
+        turno.setTipo(Turno.TipoTurno.valueOf(dto.getTipoTurno()));
+        turno.setUsuario(peon);
+        return turno;
+    }
+
     // Getters y Setters
 }

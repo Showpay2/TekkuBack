@@ -14,6 +14,15 @@ public class HorasExtra {
     private int cantidadHoras;
     private boolean aprobado;
 
+    public HorasExtra convertirDesdeDTO(HorasExtraDTO dto, Usuario usuario) {
+        HorasExtra horas = new HorasExtra();
+        horas.setFecha(dto.getFecha());
+        horas.setCantidadHoras(dto.getCantidadHoras());
+        horas.setAprobado(dto.isAprobado());
+        horas.setUsuario(usuario);
+        return horas;
+    }
+
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

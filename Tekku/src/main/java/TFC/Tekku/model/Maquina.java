@@ -18,5 +18,12 @@ public class Maquina {
         BAJA, MEDIA, ALTA
     }
 
+    public Maquina convertirDesdeDTO(MaquinaDTO dto) {
+        Maquina maquina = new Maquina();
+        maquina.setNombre(dto.getNombre());
+        maquina.setDificultad(Maquina.DificultadFisica.valueOf(dto.getDificultadFisica()));
+        return maquina;
+    }
+
     // Getters y Setters
 }

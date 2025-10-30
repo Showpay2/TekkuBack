@@ -21,5 +21,12 @@ public class ObjetivoGamificado {
     )
     private Set<Usuario> completadoPor;
 
+    public ObjetivoGamificado convertirDesdeDTO(ObjetivoGamificadoDTO dto) {
+        ObjetivoGamificado objetivo = new ObjetivoGamificado();
+        objetivo.setDescripcion(dto.getDescripcion());
+        objetivo.setPuntos(dto.getPuntos());
+        return objetivo;
+    }
+
     // Getters y Setters
 }

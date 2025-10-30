@@ -1,13 +1,11 @@
-# Build stage
-FROM maven:3.9-eclipse-temurin-21 AS build
-WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
+FROM eclipse-temurin:21-jdk
 
-# Runtime stage
-FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+
+COPY . /app
+
+RUN ./mvnw clean package -DskipTests
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+CMD ["java", "-jar", "target/backend-teku.jar"]
